@@ -9,7 +9,7 @@ RUN export DEBIAN_FRONTEND=noninteractive; apt-get update && apt-get -y upgrade 
 WORKDIR /work
 
 COPY operators /work/operators
-COPY mxnet .
+COPY mxnet /work/mxnet
 
 RUN cd mxnet \
     && make -j NVCC=/usr/local/cuda/bin/nvcc USE_CUDA=1 USE_CUDA_PATH=/usr/local/cuda-9.1/targets/x86_64-linux/ USE_CUDNN=1 USE_NCCL=1 EXTRA_OPERATORS=../operators USE_BLAS=openblas USE_LAPACK_PATH=/usr/lib/x86_64-linux-gnu/openblas/ USE_LIBJPEG_TURBO=0
